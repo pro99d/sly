@@ -1822,10 +1822,13 @@ class ParserMeta(type):
 
 class Parser(metaclass=ParserMeta):
     # Automatic tracking of position information
+    @classmethod
+    def __init__(cls, log= SlyLogger(sys.stderr)):
+        cls.log = log
     track_positions = True
-    
+     
     # Logging object where debugging/diagnostic messages are sent
-    log = SlyLogger(sys.stderr)     
+    # log = SlyLogger(sys.stderr)     
 
     # Debugging filename where parsetab.out data can be written
     debugfile = None
